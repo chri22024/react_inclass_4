@@ -5,11 +5,18 @@ export default function App() {
     const random = Math.floor(Math.random()*array.length);
     return array[random];
   }
-  const showStory = false;
-  const xItem = "";
-  const yItem = "";
-  const zItem = "";
-  const ukus = "us";
+  const [xItem, setXItem] = useState("");
+  const [yItem, setYItem] = useState("");
+  const [zItem, setZItem] = useState("");
+  const [showStory, setShowStory] = useState(false);
+  
+  
+  function generateStory() {
+    setXItem(randomValueFromArray(['Willy the Goblin', 'Big Daddy', 'Father Christmas']));
+    setYItem(randomValueFromArray(['the soup kitchen', 'Disneyland', 'the White House']));
+    setZItem(randomValueFromArray(['spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away']));
+    setShowStory(true);
+  }
   return (
     <>
       <div>
@@ -23,7 +30,7 @@ export default function App() {
         <input type="radio" value="uk" checked={ukus === "uk"} />
       </div>
       <div>
-        <button>Generate random story</button>
+        <button onClick={generateStory}>Generate random story</button>
       </div>
       {showStory && (
         <p>
